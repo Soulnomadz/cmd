@@ -99,7 +99,8 @@ fn get_bkname(opts: &UpOpts) -> Result<String> {
 // -------------------------------------------------------
 // entrypoint
 pub async fn run(args: Cli) -> Result<()> {
-    dotenvy::dotenv()?;
+    dotenvy::dotenv()
+	.map_err(|e| anyhow!("Failed to load .env file: {e}"))?;
 
     let client = Client::new(
         env::var("SECRET_ID")?,

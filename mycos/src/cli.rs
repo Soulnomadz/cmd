@@ -27,7 +27,7 @@ pub struct UpOpts {
     #[arg(
         short='t', 
         long="date", 
-        default_value="_",
+        default_value="2",
         value_parser=clap::value_parser!(u8).range(1..=3),
         help="date type for local backup file: 1 => - 2 => _",
     )]
